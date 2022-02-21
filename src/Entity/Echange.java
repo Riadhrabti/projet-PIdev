@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package crud.gestion_echange;
+package Entity;
 
 /**
  *
@@ -68,6 +68,17 @@ public class Echange {
         return "Echange{" + "id_echange=" + id_echange + ", id_membre1=" + id_membre1 + ", id_membre2=" + id_membre2 + ", id_article1=" + id_article1 + ", id_article2=" + id_article2 + '}';
     }
 
+    public Echange(int id_membre1, int id_membre2, int id_article1, int id_article2) {
+        this.id_membre1 = id_membre1;
+        this.id_membre2 = id_membre2;
+        this.id_article1 = id_article1;
+        this.id_article2 = id_article2;
+    }
+
+    public Echange(int id_echange) {
+        this.id_echange = id_echange;
+    }
+
     
     
     
@@ -76,4 +87,5 @@ public class Echange {
     
     
     
+
 

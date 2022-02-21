@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package crud.gestion_echange;
+package Config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,14 +13,14 @@ import java.sql.SQLException;
  *
  * @author Riadh
  */
-public class ConnexionBD {
-    
-    public String url="jdbc:mysql:localhost:3306/sgbd1";
+
+public class Database {
+    public String url="jdbc:mysql://localhost:3306/sgbd1";
     public String user="root";
     public String pwd="";
-    public static ConnexionBD cn;
+    public static Database cn;
     private Connection cnx;
-    private ConnexionBD(){
+    private Database(){
         try {
             cnx=DriverManager.getConnection(url, user, pwd);
             System.out.println("connexion etablie");
@@ -31,15 +31,13 @@ public class ConnexionBD {
         }
 
     }
-    public static ConnexionBD getInstance(){
+    public static Database getInstance(){
         if(cn==null)
-            cn= new ConnexionBD();
+            cn= new Database();
            return cn;
       
     }
       public Connection getCnx() {
         return cnx;  
     }
-    
-    
 }

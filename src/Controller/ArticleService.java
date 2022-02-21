@@ -3,8 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package crud.gestion_echange;
+package Controller;
 
+/**
+ *
+ * @author Riadh
+ */
+import Config.Database;
+import Entity.Article;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,15 +27,21 @@ public class ArticleService {
     PreparedStatement ste;
     
     public ArticleService(){
-    mc=ConnexionBD.getInstance().getCnx();
+    mc=Database.getInstance().getCnx();
 }
     
     public void ajouterArticle(Article a){
-    String sql="insert into Article(etat,description)values(?,?)";
+    String sql="insert into Article(Id_proprietaire,disponibilite,boost,echange_cross_cat,Date_publication,etat,description,titre)values(?,?,?,?,?,?,?,?)";
     try{
         ste=mc.prepareStatement(sql);
-        ste.setString(1,a.getTitre());
-        ste.setString(2,a.getDescription());
+        ste.setInt(1,a.getId_proprietaire());
+        ste.setBoolean(2,a.getDisponibilite());
+        ste.setBoolean(3,a.getBoost());
+        ste.setBoolean(4,a.getEchange_cross_cat());
+        ste.setDate(5,a.getDate_publication());
+        ste.setString(6,a.getEtat());
+        ste.setString(7,a.getDescription());
+        ste.setString(8,a.getTitre());
         ste.executeUpdate();
         System.out.println("article ajouté");
         
@@ -60,8 +72,8 @@ public class ArticleService {
             while (rs.next()) {
                 Article a = new Article();
                 a.setId(rs.getInt("id"));
-                a.getTitre(rs.getString("Titre"));
-                a.getDescription(rs.getString("Description"));
+                a.setTitre(rs.getString("Titre"));
+                a.setDescription(rs.getString("Description"));
                 articles.add(a);
             }
         } catch (SQLException ex) {

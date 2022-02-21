@@ -3,8 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package crud.gestion_echange;
+package Controller;
 
+/**
+ *
+ * @author Riadh
+ */
+import Config.Database;
+import Entity.Membre;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,14 +27,25 @@ public class MembreService {
     PreparedStatement ste;
     
 public MembreService(){
-    mc=ConnexionBD.getInstance().getCnx();
+    mc=Database.getInstance().getCnx();
 }
 public void ajouterMembre(Membre m){
-    String sql="insert into Membre(nom,prenom)values(?,?)";
+    String sql="INSERT INTO membre( nom, prenom, email, login, mdp, adresse, num_tel, Date_naissance, sexe, rating, nb_articles_posté, nb_articles_echangées) VALUES "
+            + "(?,?,?,?,?,?,?,?,?,?,?,?)";
     try{
         ste=mc.prepareStatement(sql);
         ste.setString(1,m.getNom());
         ste.setString(2,m.getPrenom());
+        ste.setString(3,m.getEmail());
+        ste.setString(4,m.getLogin());
+        ste.setString(5,m.getMdp());
+        ste.setString(6,m.getAdresse());
+        ste.setString(7,m.getNum_tel());
+        ste.setDate(8,m.getDate_naissance());
+        ste.setString(9,m.getSexe());
+        ste.setFloat(10,m.getRating());
+        ste.setInt(11,m.getNb_articles_posté());
+        ste.setInt(12,m.getNb_articles_echangées());
         ste.executeUpdate();
         System.out.println("membre ajouté");
         
@@ -53,15 +70,26 @@ public void ajouterMembre(Membre m){
     }
     public List<Membre> afficherMembre(){
         List<Membre> membres = new ArrayList<>();
-        String sql="select * from Membre";
+        String sql="select * from Membre ";
         try {
             ste=mc.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
             while(rs.next()){
                 Membre m = new Membre();
-                m.setId(rs.getInt("id"));
+                m.setId(rs.getInt("id_membre"));
                 m.setNom(rs.getString("nom"));
                 m.setPrenom(rs.getString("prenom"));
+                m.setEmail(rs.getString("email"));
+                m.setLogin(rs.getString("login"));
+                m.setMdp(rs.getString("mdp"));
+                m.setAdresse(rs.getString("adresse"));
+                m.setNum_tel(rs.getString("num_tel"));
+                m.setDate_naissance(rs.getDate("Date_naissance"));
+                m.setSexe(rs.getString("Sexe"));
+                m.setRating(rs.getFloat("rating"));
+                m.setNb_articles_posté(rs.getInt("nb_articles_posté"));
+                m.setNb_articles_echangées(rs.getInt("Nb_articles_echangées"));
+                
                 membres.add(m);
             }
         } catch (SQLException ex) {
@@ -72,7 +100,7 @@ public void ajouterMembre(Membre m){
     
 }public void DeletePersonne(Membre m ){
         
-        String sql ="delete from membre where id = ?";
+        String sql ="delete from membre where id_membre = ?";
         try{
         ste=mc.prepareStatement(sql);
         ste.setInt(1, m.getId());
@@ -83,3 +111,4 @@ public void ajouterMembre(Membre m){
         }
     }
 }
+

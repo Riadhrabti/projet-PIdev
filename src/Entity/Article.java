@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package crud.gestion_echange;
+package Entity;
 
-import java.util.Date;
+/**
+ *
+ * @author Riadh
+ */
+import java.sql.Date;
 
 /**
  *
@@ -68,7 +72,7 @@ public class Article {
         this.id_proprietaire = id_proprietaire;
     }
 
-    public boolean isDisponibilite() {
+    public boolean getDisponibilite() {
         return disponibilite;
     }
 
@@ -76,7 +80,7 @@ public class Article {
         this.disponibilite = disponibilite;
     }
 
-    public boolean isBoost() {
+    public boolean getBoost() {
         return boost;
     }
 
@@ -84,7 +88,7 @@ public class Article {
         this.boost = boost;
     }
 
-    public boolean isEchange_cross_cat() {
+    public boolean getEchange_cross_cat() {
         return echange_cross_cat;
     }
 
@@ -134,6 +138,10 @@ public class Article {
     }
 
     void getDescription(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String disponibilite() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
