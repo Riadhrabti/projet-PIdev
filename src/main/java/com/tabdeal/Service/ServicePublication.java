@@ -27,12 +27,12 @@ import java.util.logging.Logger;
  */
 public class ServicePublication implements InterfaceService<Publication> {
 
-    private Connection con;
+    private Connection conn;
     private Statement ste;
     private PreparedStatement pste;
 
     public ServicePublication() {
-        con = DataBase.getInstance().getConnection();
+        conn = DataBase.getInstance().getConnection();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ServicePublication implements InterfaceService<Publication> {
 
         String req = "INSERT INTO `publication` (`id`, `titre`, `date`, `description`, `like`, `dislike`, `id_categorie`, `dislike`) VALUES (" + t.getId() + "," + t.getTitre() + "," + format.format(date_publication).toString() + "," + t.getDescription() + "," + t.getLike() + "," + t.getDislike() + "," + t.getId_categorie() + "," + t.getId_user() + ")";
         try {
-            ste = con.createStatement();
+            ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("publication créé");
         } catch (SQLException ex) {
@@ -56,7 +56,7 @@ public class ServicePublication implements InterfaceService<Publication> {
     public boolean delete(Publication t) {
         String req = "delete from publication where id=?;";
         try {
-            pste = con.prepareStatement(req);
+            pste = conn.prepareStatement(req);
 
             pste.setInt(1, t.getId());
 
@@ -74,7 +74,7 @@ public class ServicePublication implements InterfaceService<Publication> {
     public boolean update(Publication t) {
         String req = "update publication set titre=?, date=? ,description=? , id_categorie=? ,  where id=?;";
         try {
-            pste = con.prepareStatement(req);
+            pste = conn.prepareStatement(req);
             pste.setString(1, t.getTitre());
             pste.setString(2, t.getDate());
             pste.setString(3, t.getDescription());
@@ -100,7 +100,7 @@ public class ServicePublication implements InterfaceService<Publication> {
 //            pste = conn.prepareStatement(req);
 //            ResultSet rs = pste.executeQuery();
 
-            ste = con.createStatement();
+            ste = conn.createStatement();
             ResultSet rs = ste.executeQuery(req);
 
             while (rs.next()) {

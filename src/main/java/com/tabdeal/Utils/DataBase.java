@@ -18,10 +18,10 @@ public class DataBase {
      String login = "root";
      String pwd = "";
     public  static DataBase db;
-    public Connection con;
+    public Connection conn;
     private DataBase() {
          try {
-             con=DriverManager.getConnection(url, login, pwd);
+             conn=DriverManager.getConnection(url, login, pwd);
              System.out.println("connexion etablie");
          } catch (SQLException ex) {
              System.out.println(ex);
@@ -30,7 +30,7 @@ public class DataBase {
     
     public Connection  getConnection()
     {
-    return con;
+    return conn;
     }     
     public static DataBase getInstance()
     {if(db==null)

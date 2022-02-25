@@ -22,12 +22,12 @@ import java.util.logging.Logger;
  * @author SBS
  */
 public class ServiceFavoris implements InterfaceService <Favoris>  {
-    private Connection con;
+    private Connection conn;
     private Statement ste;
     private PreparedStatement pste;
 
     public ServiceFavoris() {
-        con = DataBase.getInstance().getConnection();
+        conn = DataBase.getInstance().getConnection();
         
     }
     
@@ -37,7 +37,7 @@ public class ServiceFavoris implements InterfaceService <Favoris>  {
         String req = "INSERT INTO `favoris` (`id`, `id_user`, `id_categorie`) VALUES (" + t.getId()+ "," + t.getId_user() + "," + t.getId_categorie()+ ")";
     
         try {
-            ste = con.createStatement();
+            ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("favoris créé");
         } catch (SQLException ex) {
@@ -49,7 +49,7 @@ public class ServiceFavoris implements InterfaceService <Favoris>  {
     public boolean delete(Favoris t)  {
         String req = "delete from favoris where id=?;";
         try {
-            pste = con.prepareStatement(req);
+            pste = conn.prepareStatement(req);
 
             pste.setInt(1, t.getId());
 
@@ -76,7 +76,7 @@ public class ServiceFavoris implements InterfaceService <Favoris>  {
     public void getFavoriesCategoriesByUser(int id_user){
         String req = "Select * from catégorie as c inner join favoris as f on c.id=f.id_categorie where f.id_user="+ id_user +";"   ;
         try {
-            ste = con.createStatement();
+            ste = conn.createStatement();
             ResultSet rs=ste.executeQuery(req);
             while (rs.next()) {
                 System.out.println(rs.getInt(1));

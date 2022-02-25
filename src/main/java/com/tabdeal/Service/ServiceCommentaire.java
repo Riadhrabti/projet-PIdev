@@ -9,10 +9,12 @@ import com.tabdeal.Entite.Commentaire;
 import com.tabdeal.InterfaceService.InterfaceService;
 import com.tabdeal.Utils.DataBase;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,22 +25,25 @@ import java.util.logging.Logger;
  * @author SBS
  */
 public class ServiceCommentaire implements InterfaceService <Commentaire> {
-    private Connection con;
+    private Connection conn;
     private Statement ste;
     private PreparedStatement pste;
 
     public ServiceCommentaire() {
-        con = DataBase.getInstance().getConnection();
+        conn = DataBase.getInstance().getConnection();
 
    
     }
 
     @Override
     public void ajouter(Commentaire t)  {
-        String req = "INSERT INTO `publication` (`id`, `id_user`, `id_publication`, `commentaire`, `date`) VALUES (" + t.getId()+ "," + t.getId_user() + "," + t.getId_publication()+ "," + t.getCommentaire() + "," + t.getDate() + ")";
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date_publication = new Date(System.currentTimeMillis()) ;
+        
+        String req = "INSERT INTO `publication` (`id`, `id_user`, `id_publication`, `commentaire`, `date`) VALUES (" + t.getId()+ "," + t.getId_user() + "," + t.getId_publication()+ "," + t.getCommentaire() + "," + format.format(date_publication).toString() + ")";
     
         try {
-            ste = con.createStatement();
+            ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("commentaire créé");
         } catch (SQLException ex) {
@@ -50,7 +55,7 @@ public class ServiceCommentaire implements InterfaceService <Commentaire> {
     public boolean delete(Commentaire t)  {
         String req = "delete from commentaire where id=?;";
         try {
-            pste = con.prepareStatement(req);
+            pste = conn.prepareStatement(req);
 
             pste.setInt(1, t.getId());
 
@@ -67,7 +72,7 @@ public class ServiceCommentaire implements InterfaceService <Commentaire> {
     public boolean update(Commentaire t)  {
         String req = "update commentaire set commentaire=?, date=?  where id=?;";
         try {
-            pste = con.prepareStatement(req);
+            pste = conn.prepareStatement(req);
             pste.setString(1, t.getCommentaire());
             pste.setString(2, t.getDate());
             
@@ -90,7 +95,7 @@ public class ServiceCommentaire implements InterfaceService <Commentaire> {
 //            pste = conn.prepareStatement(req);
 //            ResultSet rs = pste.executeQuery();
 
-            ste = con.createStatement();
+            ste = conn.createStatement();
             ResultSet rs = ste.executeQuery(req);
 
             while (rs.next()) {

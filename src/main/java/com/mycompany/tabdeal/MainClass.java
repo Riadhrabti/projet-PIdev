@@ -26,8 +26,8 @@ public class MainClass {
         //cat.ajouter2(c);
         //System.out.println(cat.readAll());
         
-        ServiceFavoris fav = new ServiceFavoris();
-        fav.getFavoriesCategoriesByUser(1);
+        //ServiceFavoris fav = new ServiceFavoris();
+        //fav.getFavoriesCategoriesByUser(1);
         
         
         

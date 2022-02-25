@@ -23,11 +23,11 @@ import java.util.logging.Logger;
  * @author SBS
  */
 public class ServiceCategorie implements InterfaceService <Categorie>{
-    private Connection con;
+    private Connection conn;
     private Statement ste;
     private PreparedStatement pste;
 public ServiceCategorie() {
-        con = DataBase.getInstance().getConnection();
+        conn = DataBase.getInstance().getConnection();
 
     }
 
@@ -36,7 +36,7 @@ public ServiceCategorie() {
     public void ajouter(Categorie t)  {
         String req = "INSERT INTO `categorie` (`id`,`nom`) VALUE ('" + t.getId() + "','" + t.getNom() + "')";
         try {
-            ste = con.createStatement();
+            ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Categorie crée");
         } catch (SQLException ex) {
@@ -49,7 +49,7 @@ public ServiceCategorie() {
     public void ajouter2(Categorie t) {
         String req = "INSERT INTO `catégorie` (`id`,`nom`) VALUE (?,?)";
         try {
-            pste = con.prepareStatement(req);
+            pste = conn.prepareStatement(req);
             pste.setInt(1, t.getId());
             pste.setString(2, t.getNom());
             pste.executeUpdate();
@@ -63,7 +63,7 @@ public ServiceCategorie() {
     public boolean delete(Categorie t)  {
         String req = "delete from categorie where id=?;";
         try {
-            pste = con.prepareStatement(req);
+            pste = conn.prepareStatement(req);
             
             pste.setInt(1, t.getId());
             
@@ -81,7 +81,7 @@ public ServiceCategorie() {
     public boolean update(Categorie t)  {
         String req ="update publication set nom=?";
          try {
-            pste = con.prepareStatement(req);
+            pste = conn.prepareStatement(req);
             pste.setString(1, t.getNom());
             
             
@@ -105,7 +105,7 @@ public ServiceCategorie() {
 //            pste = conn.prepareStatement(req);
 //            ResultSet rs = pste.executeQuery();
             
-            ste = con.createStatement();
+            ste = conn.createStatement();
             ResultSet rs = ste.executeQuery(req);
             
             while(rs.next()){
