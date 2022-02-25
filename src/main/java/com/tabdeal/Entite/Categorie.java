@@ -10,8 +10,8 @@ package com.tabdeal.Entite;
  * @author SBS
  */
 public class Categorie {
-    int id;
-    String nom;
+    private int id;
+    private String nom;
 
     public Categorie(int id, String nom) {
         this.id = id;
@@ -19,7 +19,7 @@ public class Categorie {
     }
 
     public Categorie() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     public int getId() {

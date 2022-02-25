@@ -10,14 +10,44 @@ package com.tabdeal.Entite;
  * @author SBS
  */
 public class Publication {
-    int id,like,dislike;
-    String description,date,titre;
+    private int id;
+    private int like;
+    private int dislike;
+    private int id_categorie;
+    private int id_user; 
+    private String description;
+    private String date;
+    private String titre;
 
-    public Publication(int id, String description, String date, String titre) {
+    public Publication(int id,int id_categorie ,String description, String date, String titre) {
         this.id = id;
         this.description = description;
         this.date = date;
         this.titre = titre;
+        this.like = 0;
+        this.dislike = 0;
+        this.id_categorie= id_categorie;
+                
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+
+    public int getId_categorie() {
+        return id_categorie;
+    }
+
+    public void setId_categorie(int id_categorie) {
+        this.id_categorie = id_categorie;
+    }
+
+    public Publication() {
+        
     }
 
     public int getId() {

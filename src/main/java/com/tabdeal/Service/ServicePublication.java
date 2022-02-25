@@ -10,10 +10,12 @@ import com.tabdeal.Entite.Publication;
 import com.tabdeal.InterfaceService.InterfaceService;
 import com.tabdeal.Utils.DataBase;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -35,8 +37,11 @@ public class ServicePublication implements InterfaceService<Publication> {
 
     @Override
     public void ajouter(Publication t) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date_publication = new Date(System.currentTimeMillis()) ;
+        
 
-        String req = "INSERT INTO `publication` (`id`, `titre`, `date`, `description`, `like`, `dislike`, `id_categorie`) VALUES (" + t.getId() + "," + t.getTitre()+ "," + t.getDate()+ "," + t.getDescription()+ "," + t.getLike()+ "," + t.getDislike()+ "," + t.getId_categorie()+  ")";
+        String req = "INSERT INTO `publication` (`id`, `titre`, `date`, `description`, `like`, `dislike`, `id_categorie`, `dislike`) VALUES (" + t.getId() + "," + t.getTitre() + "," + format.format(date_publication).toString() + "," + t.getDescription() + "," + t.getLike() + "," + t.getDislike() + "," + t.getId_categorie() + "," + t.getId_user() + ")";
         try {
             ste = con.createStatement();
             ste.executeUpdate(req);
@@ -52,23 +57,22 @@ public class ServicePublication implements InterfaceService<Publication> {
         String req = "delete from publication where id=?;";
         try {
             pste = con.prepareStatement(req);
-            
+
             pste.setInt(1, t.getId());
-            
+
             pste.executeUpdate();
-            System.out.println("personne Supprimé");
+            System.out.println("publication Supprimé");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(ServicePublication.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        
 
     }
 
     @Override
     public boolean update(Publication t) {
-        String req ="update publication set titre=?, date=? ,description=? , id_categorie = ? where id=?;";
+        String req = "update publication set titre=?, date=? ,description=? , id_categorie=? ,  where id=?;";
         try {
             pste = con.prepareStatement(req);
             pste.setString(1, t.getTitre());
@@ -76,15 +80,14 @@ public class ServicePublication implements InterfaceService<Publication> {
             pste.setString(3, t.getDescription());
             pste.setInt(4, t.getId_categorie());
             
+
             pste.executeUpdate();
-            System.out.println("personne créée");
+            System.out.println("publication créée");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(ServicePublication.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
-        
 
     }
 
@@ -109,7 +112,8 @@ public class ServicePublication implements InterfaceService<Publication> {
                 p.setLike(rs.getInt("like"));
                 p.setDislike(rs.getInt("dislike"));
                 p.setId_categorie(rs.getInt("id_categorie"));
-         
+                p.setId_user(rs.getInt("id_user"));
+
                 publications.add(p);
             }
 

@@ -47,7 +47,7 @@ public ServiceCategorie() {
     
     
     public void ajouter2(Categorie t) {
-        String req = "INSERT INTO `categorie` (`id`,`nom`) VALUE (?,?)";
+        String req = "INSERT INTO `catégorie` (`id`,`nom`) VALUE (?,?)";
         try {
             pste = con.prepareStatement(req);
             pste.setInt(1, t.getId());
@@ -97,9 +97,9 @@ public ServiceCategorie() {
     }
 
     @Override
-    public List<Categorie> readAll()  {
+    public List<Categorie> readAll() {
         List<Categorie> categories = new ArrayList<>();
-        String req = "SELECT * FROM `categorie`";
+        String req = "SELECT id,nom FROM `catégorie`";
         
         try {
 //            pste = conn.prepareStatement(req);
@@ -109,11 +109,11 @@ public ServiceCategorie() {
             ResultSet rs = ste.executeQuery(req);
             
             while(rs.next()){
-                Categorie c = new Categorie();
-                c.setId(rs.getInt("id"));
-                c.setNom(rs.getString(2));
-            
-                categories.add(c);
+                Categorie p = new Categorie();
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString(2));
+                
+                categories.add(p);
             }
             
         } catch (SQLException ex) {
