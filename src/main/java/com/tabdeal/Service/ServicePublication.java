@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -40,12 +42,21 @@ public class ServicePublication implements InterfaceService<Publication> {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date_publication = new Date(System.currentTimeMillis()) ;
         
-
-        String req = "INSERT INTO `publication` (`id`, `titre`, `date`, `description`, `like`, `dislike`, `id_categorie`, `dislike`) VALUES (" + t.getId() + "," + t.getTitre() + "," + format.format(date_publication).toString() + "," + t.getDescription() + "," + t.getLike() + "," + t.getDislike() + "," + t.getId_categorie() + "," + t.getId_user() + ")";
+     PreparedStatement ps;
+        
         try {
-            ste = conn.createStatement();
-            ste.executeUpdate(req);
-            System.out.println("publication créé");
+            String req = "INSERT INTO `publication` ( `titre`, `date`, `description`, `like`, `dislike`, `id_categorie`,`id_user`) VALUES (?,?,?,?,?,?,?)";
+            ps= conn.prepareStatement(req);
+            
+             ps.setString(1, t.getTitre());
+             ps.setString(2, date_publication.toString());
+             ps.setString(3, t.getDescription());
+             ps.setInt(4, t.getLike());
+             ps.setInt(5, t.getDislike());
+             ps.setInt(6, t.getId_categorie());
+             ps.setInt(7, t.getId_user());
+             ps.executeUpdate();
+             
         } catch (SQLException ex) {
             Logger.getLogger(ServicePublication.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,13 +83,15 @@ public class ServicePublication implements InterfaceService<Publication> {
 
     @Override
     public boolean update(Publication t) {
-        String req = "update publication set titre=?, date=? ,description=? , id_categorie=? ,  where id=?;";
+        String req = "update publication set titre=? , description=? , id_categorie=? ,  where id=?;";
         try {
             pste = conn.prepareStatement(req);
             pste.setString(1, t.getTitre());
-            pste.setString(2, t.getDate());
-            pste.setString(3, t.getDescription());
-            pste.setInt(4, t.getId_categorie());
+            
+            pste.setString(2, t.getDescription());
+            pste.setInt(3, t.getId_categorie());
+            pste.setInt(4, t.getId());
+            
             
 
             pste.executeUpdate();
@@ -92,8 +105,8 @@ public class ServicePublication implements InterfaceService<Publication> {
     }
 
     @Override
-    public List<Publication> readAll() {
-        List<Publication> publications = new ArrayList<>();
+    public ObservableList<Publication> readAll() {
+        ObservableList<Publication> publications =  FXCollections.observableArrayList();
         String req = "SELECT * FROM `publication`";
 
         try {
@@ -106,9 +119,10 @@ public class ServicePublication implements InterfaceService<Publication> {
             while (rs.next()) {
                 Publication p = new Publication();
                 p.setId(rs.getInt("id"));
-                p.setTitre(rs.getString(2));
-                p.setDescription(rs.getString(3));
-                p.setDate(rs.getString(4));
+                p.setTitre(rs.getString("titre"));
+                System.out.println(p.getTitre());
+                p.setDescription(rs.getString("description"));
+                p.setDate(rs.getString("date"));
                 p.setLike(rs.getInt("like"));
                 p.setDislike(rs.getInt("dislike"));
                 p.setId_categorie(rs.getInt("id_categorie"));
@@ -116,7 +130,7 @@ public class ServicePublication implements InterfaceService<Publication> {
 
                 publications.add(p);
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ServiceCategorie.class.getName()).log(Level.SEVERE, null, ex);
         }

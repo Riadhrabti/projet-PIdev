@@ -19,8 +19,8 @@ public class Publication {
     private String date;
     private String titre;
 
-    public Publication(int id,int id_categorie ,String description, String date, String titre) {
-        this.id = id;
+    public Publication(int id_categorie ,String description, String date, String titre) {
+        
         this.description = description;
         this.date = date;
         this.titre = titre;
@@ -28,6 +28,15 @@ public class Publication {
         this.dislike = 0;
         this.id_categorie= id_categorie;
                 
+    }
+
+    public Publication(String description, String titre) {
+        this.titre= titre;
+        this.description=description;
+        this.like = 0;
+        this.dislike = 0;
+        
+        
     }
 
     public int getId_user() {

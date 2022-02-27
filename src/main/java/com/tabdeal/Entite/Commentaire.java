@@ -27,6 +27,18 @@ public class Commentaire {
         this.date = date;
     }
 
+    
+
+    public Commentaire(String commentaire) {
+        this.id = id;
+        this.id_user = id_user;
+        this.id_publication = id_publication;
+        this.commentaire = commentaire;
+        this.date = date;
+        
+        
+    }
+
     public Commentaire() {
         
     }

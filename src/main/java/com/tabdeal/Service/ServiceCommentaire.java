@@ -38,14 +38,21 @@ public class ServiceCommentaire implements InterfaceService <Commentaire> {
     @Override
     public void ajouter(Commentaire t)  {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date_publication = new Date(System.currentTimeMillis()) ;
+        Date date_commentaire = new Date(System.currentTimeMillis()) ;
         
-        String req = "INSERT INTO `publication` (`id`, `id_user`, `id_publication`, `commentaire`, `date`) VALUES (" + t.getId()+ "," + t.getId_user() + "," + t.getId_publication()+ "," + t.getCommentaire() + "," + format.format(date_publication).toString() + ")";
-    
+        PreparedStatement ps;
+        
         try {
-            ste = conn.createStatement();
-            ste.executeUpdate(req);
-            System.out.println("commentaire créé");
+            String req = "INSERT INTO `commentaire` ( `id_user`, `id_publication`, `commentaire`, `date`) VALUES (?,?,?,?)";
+            ps= conn.prepareStatement(req);
+            
+             ps.setInt(1, t.getId_user());
+             ps.setInt(2, t.getId_publication());
+             ps.setString(3, t.getCommentaire());
+             ps.setString(4, date_commentaire.toString());
+             
+             ps.executeUpdate();
+             
         } catch (SQLException ex) {
             Logger.getLogger(ServiceCommentaire.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author SBS
  */
 public class DataBase {
-     String url = "jdbc:mysql://localhost:3306/tabdeal";
+     String url = "jdbc:mysql://localhost:3306/tabdealdb";
      String login = "root";
      String pwd = "";
     public  static DataBase db;
