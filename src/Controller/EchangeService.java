@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -57,19 +59,19 @@ public class EchangeService {
             System.out.println(ex.getMessage());
         }
     }
-     public List<Echange> afficherEchange(){
-        List<Echange> echanges = new ArrayList<>();
+     public ObservableList<Echange> afficherEchange(){
+        ObservableList<Echange> echanges = FXCollections.observableArrayList();
         String sql = "select * from Echange";
         try {
             ste = mc.prepareStatement(sql);
             ResultSet rs = ste.executeQuery();
             while (rs.next()) {
                 Echange e = new Echange();
-                e.setId_echange(rs.getInt("1"));
-                e.setId_membre1(rs.getInt("2"));
-                e.setId_membre2(rs.getInt("3"));
-                e.setId_article1(rs.getInt("4"));
-                e.setId_article2(rs.getInt("5"));
+                e.setId_echange(rs.getInt("id_echange"));
+                e.setId_membre1(rs.getInt("id_membre1"));
+                e.setId_membre2(rs.getInt("id_membre2"));
+                e.setId_article1(rs.getInt("id_article1"));
+                e.setId_article2(rs.getInt("id_article2"));
                 
                 echanges.add(e);
             }

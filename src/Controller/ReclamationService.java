@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,6 +32,7 @@ public class ReclamationService {
     public void ajouterReclamation(Reclamation r){
     String sql="INSERT INTO reclamation(id_membre,id_echange,titre,Description,Date_rec,etat) VALUES (?,?,?,?,?,?)";
     try{
+        
         ste=mc.prepareStatement(sql);
         ste.setInt(1,r.getId_membre());
         ste.setInt(2,r.getId_echange());
@@ -44,7 +47,7 @@ public class ReclamationService {
         System.out.println(ex.getMessage());
     }
 }
-    public void UpdateArticle(Reclamation r){
+    public void UpdateReclamation(Reclamation r){
         String sql ="update Reclamation set etat = ?  where id = ? ";
         try {
             ste=mc.prepareStatement(sql);
@@ -52,14 +55,14 @@ public class ReclamationService {
             ste.setInt(1, r.getEtat());
             
             ste.executeUpdate();
-            System.out.println("RECLAMATION modifier");
+            System.out.println("RECLAMATION modifié");
             ste.close();
     } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-         public List<Reclamation> afficherReclamation(){
-        List<Reclamation> reclamations = new ArrayList<>();
+         public ObservableList<Reclamation> afficherReclamation(){
+        ObservableList<Reclamation> reclamations = FXCollections.observableArrayList();
         String sql = "select * from Reclamation";
         try {
             ste = mc.prepareStatement(sql);
@@ -67,7 +70,10 @@ public class ReclamationService {
             while (rs.next()) {
                 Reclamation r = new Reclamation();
                 r.setId(rs.getInt("id"));
+                r.setId_membre(rs.getInt("id_membre"));
+                r.setId_echange(rs.getInt("id_echange"));
                 r.setTitre(rs.getString("Titre"));
+                r.setDescription(rs.getString("Description"));
                 r.setEtat(rs.getInt("etat"));
                 reclamations.add(r);
             }
@@ -76,18 +82,16 @@ public class ReclamationService {
         }
 
         return reclamations;
-        
-
-        
     }
          public void DeleteReclamation(Reclamation r ){
         
         String sql ="delete from reclamation where id = ?";
         try{
+            
         ste=mc.prepareStatement(sql);
         ste.setInt(1, r.getId());
         ste.executeUpdate();
-        System.out.println("reclamation supprimer");
+        System.out.println("reclamation supprimée");
         }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
