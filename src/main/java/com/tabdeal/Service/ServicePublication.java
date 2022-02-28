@@ -83,7 +83,7 @@ public class ServicePublication implements InterfaceService<Publication> {
 
     @Override
     public boolean update(Publication t) {
-        String req = "update publication set titre=? , description=? , id_categorie=? ,  where id=?;";
+        String req = "update publication set titre=? , description=? , id_categorie=?   where id=?;";
         try {
             pste = conn.prepareStatement(req);
             pste.setString(1, t.getTitre());

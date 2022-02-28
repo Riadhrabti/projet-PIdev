@@ -16,11 +16,15 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -29,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -69,6 +74,9 @@ public class PublicationController implements Initializable {
     private Button btnDislike;
     @FXML
     private AnchorPane pagePub;
+    private Stage stage;
+	private Scene scene;
+	private Parent root;
 
     /**
      * Initializes the controller class.
@@ -88,6 +96,7 @@ public class PublicationController implements Initializable {
         
         tablePub.setItems(pub);
         
+        
         ServiceCategorie service1 = new ServiceCategorie();
          List<Categorie> cat = service1.readAll();
         ObservableList<String> listCat= FXCollections.observableArrayList();
@@ -99,20 +108,34 @@ public class PublicationController implements Initializable {
         
         comboBoxCat.setItems(listCat);
         
+        FilteredList<Publication> filtredData = new FilteredList<>(pub, b -> true);
+        comboBoxCat.valueProperty().addListener(((observable, oldValue, newValue) -> {
+            filtredData.setPredicate(event -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (event.getTitre().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; 
+                } 
+                 else {
+                    return false;
+                }
+            });
+
+        }));
+        SortedList<Publication> sortedData = new SortedList<>(filtredData);
+        sortedData.comparatorProperty().bind(tablePub.comparatorProperty());
+        tablePub.setItems(sortedData);
+        
         
         
         // TODO
     }    
 
-    @FXML
-    private void NavigatePub_Comm(MouseEvent event) throws IOException {
-        //EventEntity rowData = row.getItem();
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("./com/tabdeal/gui/Commentaire.fxml"));
-                        AnchorPane pane = (AnchorPane) loader.load();
-                        CommentaireController uc = loader.getController();
-                       // uc.getData(rowData);
-                        pagePub.getChildren().setAll(pane);
-    }
+    
+    
 
     @FXML
     private void onAjouterPub(ActionEvent event) {
@@ -195,15 +218,22 @@ public class PublicationController implements Initializable {
 
     @FXML
     private void onCommenter(ActionEvent event) throws IOException {
+        String titre = textFieldTitre_pub.getText();
+        String description = textFieldDescription.getText();
         
-                        //AnchorPane pane = (AnchorPane) loader.load();
-                        //CommentaireController uc = loader.getController();
-                       // uc.getData(rowData);
-                        
-        Parent root;
-            URL url= new File("./src/main/java/com/tabdeal/gui/Commentaire.fxml").toURI().toURL();
-            root = FXMLLoader.load(url);
-            pagePub.getChildren().setAll(root);
+        
+            CommentaireController commCntr = new CommentaireController();
+            commCntr.showPublication(titre,description);
+            pagePub = FXMLLoader.load(getClass().getResource("/com/tabdeal/gui/Commentaire.fxml"));
+            
+		
+		
+		
+		//root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));	
+		
+            
+            
+            
     }
 
     @FXML
@@ -212,6 +242,14 @@ public class PublicationController implements Initializable {
 
     @FXML
     private void onDislikePub(ActionEvent event) {
+    }
+
+    @FXML
+    private void onMouseClickedTableView(MouseEvent event) {
+        Publication pub = tablePub.getSelectionModel().getSelectedItem();
+           textFieldTitre_pub.setText("" +pub.getTitre());
+           textFieldDescription.setText("" +pub.getDescription());
+
     }
     
 }

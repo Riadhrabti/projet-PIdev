@@ -54,17 +54,31 @@ public class CommentaireController implements Initializable {
     private Button btnRetour;
     @FXML
     private Button btnAjouterComm;
+    
+    
+    
+    
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         // TODO
         //testgit
         //testgit2
         //testgit3
-    }    
+    }  
+    
+    public void showPublication(String titre, String description ){
+        textFieldTitre_pub.setText(titre);
+        textFieldDescription.setText(description);
+        
+        
+    }
 
     @FXML
     private void onAjouterComm(ActionEvent event) {
