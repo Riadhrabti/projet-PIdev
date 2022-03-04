@@ -42,6 +42,10 @@ public class Commentaire {
     public Commentaire() {
         
     }
+
+    public Commentaire(int i, String commentaire) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

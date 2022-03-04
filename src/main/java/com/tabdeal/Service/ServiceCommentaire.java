@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -94,8 +96,8 @@ public class ServiceCommentaire implements InterfaceService <Commentaire> {
     }
 
     @Override
-    public List<Commentaire> readAll()  {
-        List<Commentaire> commentaires = new ArrayList<>();
+    public ObservableList<Commentaire> readAll()  {
+        ObservableList<Commentaire> commentaires = FXCollections.observableArrayList();
         String req = "SELECT * FROM `commentaire`";
 
         try {

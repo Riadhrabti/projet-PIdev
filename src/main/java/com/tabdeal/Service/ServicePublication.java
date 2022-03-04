@@ -17,6 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,17 +30,48 @@ import javafx.collections.ObservableList;
  * @author SBS
  */
 public class ServicePublication implements InterfaceService<Publication> {
+    
+  
+    
 
     private Connection conn;
     private Statement ste;
     private PreparedStatement pste;
+    
+    
 
     public ServicePublication() {
         conn = DataBase.getInstance().getConnection();
     }
+    
+    public boolean isCleanOfBadWords(Publication t){
+            
+        List<String> badWords=Arrays.asList("FUCK","DAMN","SHIT","BITCH");
+       String publicationTitle = t.getTitre();
+       String publicationDescription = t.getDescription();
+       
+       String[] publicationTitleWords = publicationTitle.split(" ");
+       String[] publicationDescriptionWords = publicationDescription.split(" ");
+       
+       for ( String word :publicationTitleWords ) {
+       if(badWords.contains(word.toUpperCase())){
+       return false;       
+       }
+       }
+       for (String word : publicationDescriptionWords){
+            if(badWords.contains(word.toUpperCase())){
+       return false;       
+       }       
+       }
+        return true;
+    }
 
     @Override
     public void ajouter(Publication t) {
+        
+        
+      if(isCleanOfBadWords(t)){
+        
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date_publication = new Date(System.currentTimeMillis()) ;
         
@@ -59,7 +92,10 @@ public class ServicePublication implements InterfaceService<Publication> {
              
         } catch (SQLException ex) {
             Logger.getLogger(ServicePublication.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }}
+      else {
+        throw new RuntimeException("Your Publication is not clean");
+      }
 
     }
 

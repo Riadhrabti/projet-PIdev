@@ -6,6 +6,7 @@
 package com.mycompany.tabdeal;
 
 import com.tabdeal.Entite.Categorie;
+import com.tabdeal.Entite.Publication;
 import com.tabdeal.Service.ServiceCategorie;
 import com.tabdeal.Service.ServiceFavoris;
 import com.tabdeal.Service.ServicePublication;
@@ -18,16 +19,12 @@ public class MainClass {
     public static void main(String[] args) {
         
         ServiceCategorie cat = new ServiceCategorie();
-        //ServicePublication pub = new ServicePublication();
-        
-        //System.out.println(pub.readAll());
-        
-        //Categorie c = new Categorie(25,"book");
-        //cat.ajouter2(c);
-        //System.out.println(cat.readAll());
-        
-        //ServiceFavoris fav = new ServiceFavoris();
-        //fav.getFavoriesCategoriesByUser(1);
+      ServicePublication publicationService = new ServicePublication();
+      
+      Publication p = new Publication("fuck","Zzab");
+      Publication p2 = new Publication("not","Zzab");
+      
+      publicationService.ajouter(p);
         
         
         

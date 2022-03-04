@@ -12,33 +12,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="pagePub" prefHeight="501.0" prefWidth="991.0" style="-fx-background-color: #565AE3;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tabdeal.gui.PublicationController">
+<AnchorPane id="AnchorPane" fx:id="pagePub" prefHeight="631.0" prefWidth="991.0" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tabdeal.gui.PublicationController">
     <stylesheets>
         <URL value="@publication.css" />
     </stylesheets>
    <children>
-      <Label layoutX="14.0" layoutY="67.0" prefHeight="35.0" prefWidth="179.0" text="Titre Publication">
+      <ImageView fitHeight="99.0" fitWidth="107.0" layoutX="8.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Bureau/TabdealPhoto/Logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="8.0" layoutY="107.0" prefHeight="35.0" prefWidth="170.0" text="Titre Publication">
          <font>
             <Font name="System Bold Italic" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="33.0" layoutY="171.0" text="Description">
+      <Label layoutX="28.0" layoutY="198.0" text="Description">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldTitre_pub" layoutX="190.0" layoutY="62.0" prefHeight="45.0" prefWidth="187.0">
+      <TextField fx:id="textFieldTitre_pub" layoutX="193.0" layoutY="102.0" prefHeight="55.0" prefWidth="187.0">
          <font>
             <Font size="21.0" />
          </font>
       </TextField>
-      <TextField fx:id="textFieldDescription" layoutX="161.0" layoutY="148.0" prefHeight="132.0" prefWidth="244.0">
+      <TextField fx:id="textFieldDescription" layoutX="185.0" layoutY="173.0" prefHeight="80.0" prefWidth="203.0">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
-      <Button fx:id="btnAjouterPub" layoutX="27.0" layoutY="298.0" mnemonicParsing="false" onAction="#onAjouterPub" prefHeight="39.0" prefWidth="119.0" text="Ajouter">
+      <Button fx:id="btnAjouterPub" layoutX="8.0" layoutY="296.0" mnemonicParsing="false" onAction="#onAjouterPub" prefHeight="39.0" prefWidth="119.0" text="Ajouter">
          <font>
             <Font size="18.0" />
          </font>
@@ -50,7 +54,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnModifierPub" layoutX="154.0" layoutY="298.0" mnemonicParsing="false" onAction="#onModifierPub" prefHeight="39.0" prefWidth="126.0" text="Modifier">
+      <Button fx:id="btnModifierPub" layoutX="134.0" layoutY="296.0" mnemonicParsing="false" onAction="#onModifierPub" prefHeight="39.0" prefWidth="126.0" text="Modifier">
          <font>
             <Font size="18.0" />
          </font>
@@ -62,7 +66,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnSupprimePub" layoutX="290.0" layoutY="298.0" mnemonicParsing="false" onAction="#onSupprimePub" text="Supprimé">
+      <Button fx:id="btnSupprimePub" layoutX="271.0" layoutY="296.0" mnemonicParsing="false" onAction="#onSupprimePub" text="Supprimé">
          <font>
             <Font size="18.0" />
          </font>
@@ -74,22 +78,17 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="tablePub" layoutX="435.0" layoutY="51.0" onMouseClicked="#onMouseClickedTableView" prefHeight="443.0" prefWidth="550.0">
+      <TableView fx:id="tablePub" layoutX="431.0" layoutY="51.0" onMouseClicked="#onMouseClickedTablePub" prefHeight="243.0" prefWidth="554.0">
         <columns>
           <TableColumn fx:id="collTitre" prefWidth="116.0" text="Titre" />
           <TableColumn fx:id="collDescription" prefWidth="184.0" text="Description" />
-            <TableColumn fx:id="collDate" prefWidth="124.0" text="Date" />
+            <TableColumn fx:id="collDatePub" prefWidth="124.0" text="Date" />
             <TableColumn fx:id="collLike" prefWidth="57.0" text="Like" />
             <TableColumn fx:id="collDislike" prefWidth="74.0" text="Dislike" />
         </columns>
       </TableView>
       <ComboBox fx:id="comboBoxCat" layoutX="812.0" layoutY="14.0" onAction="#onChoixCategorie" prefWidth="150.0" promptText="Choix Categorie" />
-      <Button fx:id="btnCommenter" layoutX="290.0" layoutY="353.0" mnemonicParsing="false" onAction="#onCommenter" prefHeight="105.0" prefWidth="119.0" text="Commenter">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnLike" layoutX="50.0" layoutY="367.0" mnemonicParsing="false" onAction="#onLikePub" prefHeight="39.0" prefWidth="92.0" text="Like">
+      <Button fx:id="btnLike" layoutX="81.0" layoutY="348.0" mnemonicParsing="false" onAction="#onLikePub" prefHeight="39.0" prefWidth="92.0" text="Like">
          <font>
             <Font size="18.0" />
          </font>
@@ -101,7 +100,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnDislike" layoutX="162.0" layoutY="367.0" mnemonicParsing="false" onAction="#onDislikePub" prefHeight="39.0" prefWidth="110.0" text="Dislike">
+      <Button fx:id="btnDislike" layoutX="209.0" layoutY="348.0" mnemonicParsing="false" onAction="#onDislikePub" prefHeight="39.0" prefWidth="110.0" text="Dislike">
          <font>
             <Font size="18.0" />
          </font>
@@ -109,6 +108,78 @@
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../../Bureau/TabdealPhoto/dislike.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TableView fx:id="tableComm" layoutX="431.0" layoutY="306.0" onMouseClicked="#onMouseClickedTableComm" prefHeight="262.0" prefWidth="554.0">
+        <columns>
+          <TableColumn fx:id="collCommentaire" prefWidth="404.0" text="Commentaire" />
+          <TableColumn fx:id="collDateComm" prefWidth="149.0" text="Date" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="468.0" prefHeight="35.0" prefWidth="194.0" text="Votre Commentaire">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textfieldCommentaire" layoutX="222.0" layoutY="446.0" prefHeight="80.0" prefWidth="178.0" />
+      <Button fx:id="btnAjouterComm" layoutX="22.0" layoutY="540.0" mnemonicParsing="false" onAction="#onAjouterComm" prefHeight="39.0" prefWidth="119.0" text="Ajouter">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnModifierComm" layoutX="146.0" layoutY="540.0" mnemonicParsing="false" onAction="#onModifierComm" prefHeight="39.0" prefWidth="126.0" text="Modifier">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Bureau/TabdealPhoto/refresh.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnSupprimeComm" layoutX="279.0" layoutY="540.0" mnemonicParsing="false" onAction="#onSupprimeComm" text="Supprimé">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Bureau/TabdealPhoto/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnRetour" layoutX="863.0" layoutY="578.0" mnemonicParsing="false" onAction="#onRetour" prefHeight="39.0" prefWidth="114.0" text="Retour">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnFavoris" layoutX="719.0" layoutY="578.0" mnemonicParsing="false" onAction="#onSupprimePub" prefHeight="39.0" prefWidth="119.0" text="Favoris">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Bureau/TabdealPhoto/favori.png" />
                </image>
             </ImageView>
          </graphic>

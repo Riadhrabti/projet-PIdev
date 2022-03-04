@@ -6,8 +6,10 @@
 package com.tabdeal.gui;
 
 import com.tabdeal.Entite.Categorie;
+import com.tabdeal.Entite.Commentaire;
 import com.tabdeal.Entite.Publication;
 import com.tabdeal.Service.ServiceCategorie;
+import com.tabdeal.Service.ServiceCommentaire;
 import com.tabdeal.Service.ServicePublication;
 import java.io.File;
 import java.io.IOException;
@@ -59,15 +61,13 @@ public class PublicationController implements Initializable {
     @FXML
     private TableColumn<Publication, String> collDescription;
     @FXML
-    private TableColumn<Publication, String> collDate;
+    private TableColumn<Publication, String> collDatePub;
     @FXML
     private TableColumn<Publication, Integer> collLike;
     @FXML
     private TableColumn<Publication, Integer> collDislike;
     @FXML
     private ComboBox<String> comboBoxCat;
-    @FXML
-    private Button btnCommenter;
     @FXML
     private Button btnLike;
     @FXML
@@ -77,6 +77,25 @@ public class PublicationController implements Initializable {
     private Stage stage;
 	private Scene scene;
 	private Parent root;
+    @FXML
+    private TableView<Commentaire> tableComm;
+    @FXML
+    private TextField textfieldCommentaire;
+    @FXML
+    private Button btnAjouterComm;
+    @FXML
+    private Button btnModifierComm;
+    @FXML
+    private Button btnSupprimeComm;
+    @FXML
+    private Button btnRetour;
+    @FXML
+    private Button btnFavoris;
+    
+    @FXML
+    private TableColumn<Commentaire, String> collCommentaire;
+    @FXML
+    private TableColumn<Commentaire, String> collDateComm;
 
     /**
      * Initializes the controller class.
@@ -90,7 +109,7 @@ public class PublicationController implements Initializable {
         
         collTitre.setCellValueFactory(new PropertyValueFactory<Publication,String>("titre"));
         collDescription.setCellValueFactory(new PropertyValueFactory<Publication,String>("description"));
-        collDate.setCellValueFactory(new PropertyValueFactory<Publication,String>("date"));
+        collDatePub.setCellValueFactory(new PropertyValueFactory<Publication,String>("date"));
         collLike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("like"));
         collDislike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("dislike"));
         
@@ -142,10 +161,24 @@ public class PublicationController implements Initializable {
         String titre = textFieldTitre_pub.getText();
         String description = textFieldDescription.getText();
 
-        Publication pub = new Publication(5,titre,"test",description);
+        Publication pub = new Publication(titre,description);
         ServicePublication service = new ServicePublication();
         service.ajouter(pub);
         tablePub.refresh();
+        
+        
+        
+        ObservableList<Publication> pub1 = service.readAll();
+        
+        
+        
+        collTitre.setCellValueFactory(new PropertyValueFactory<Publication,String>("titre"));
+        collDescription.setCellValueFactory(new PropertyValueFactory<Publication,String>("description"));
+        collDatePub.setCellValueFactory(new PropertyValueFactory<Publication,String>("date"));
+        collLike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("like"));
+        collDislike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("dislike"));
+        
+        tablePub.setItems(pub1);
         
         }
         
@@ -164,7 +197,7 @@ public class PublicationController implements Initializable {
         
         collTitre.setCellValueFactory(new PropertyValueFactory<Publication,String>("titre"));
         collDescription.setCellValueFactory(new PropertyValueFactory<Publication,String>("description"));
-        collDate.setCellValueFactory(new PropertyValueFactory<Publication,String>("date"));
+        collDatePub.setCellValueFactory(new PropertyValueFactory<Publication,String>("date"));
         collLike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("like"));
         collDislike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("dislike"));
         
@@ -185,6 +218,19 @@ public class PublicationController implements Initializable {
         tablePub.refresh();
         
         
+        ObservableList<Publication> pub1 = service.readAll();
+        
+        
+        
+        collTitre.setCellValueFactory(new PropertyValueFactory<Publication,String>("titre"));
+        collDescription.setCellValueFactory(new PropertyValueFactory<Publication,String>("description"));
+        collDatePub.setCellValueFactory(new PropertyValueFactory<Publication,String>("date"));
+        collLike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("like"));
+        collDislike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("dislike"));
+        
+        tablePub.setItems(pub1);
+        
+        
     }
 
     @FXML
@@ -198,6 +244,20 @@ public class PublicationController implements Initializable {
         ServicePublication service = new ServicePublication();
         service.delete(pub);
         tablePub.refresh();
+        
+        
+        
+        ObservableList<Publication> pub1 = service.readAll();
+        
+        
+        
+        collTitre.setCellValueFactory(new PropertyValueFactory<Publication,String>("titre"));
+        collDescription.setCellValueFactory(new PropertyValueFactory<Publication,String>("description"));
+        collDatePub.setCellValueFactory(new PropertyValueFactory<Publication,String>("date"));
+        collLike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("like"));
+        collDislike.setCellValueFactory(new PropertyValueFactory<Publication,Integer>("dislike"));
+        
+        tablePub.setItems(pub1);
     }
 
     @FXML
@@ -216,25 +276,7 @@ public class PublicationController implements Initializable {
         
     }
 
-    @FXML
-    private void onCommenter(ActionEvent event) throws IOException {
-        String titre = textFieldTitre_pub.getText();
-        String description = textFieldDescription.getText();
-        
-        
-            CommentaireController commCntr = new CommentaireController();
-            commCntr.showPublication(titre,description);
-            pagePub = FXMLLoader.load(getClass().getResource("/com/tabdeal/gui/Commentaire.fxml"));
-            
-		
-		
-		
-		//root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));	
-		
-            
-            
-            
-    }
+    
 
     @FXML
     private void onLikePub(ActionEvent event) {
@@ -244,12 +286,45 @@ public class PublicationController implements Initializable {
     private void onDislikePub(ActionEvent event) {
     }
 
+    
+
+    
+
     @FXML
-    private void onMouseClickedTableView(MouseEvent event) {
+    private void onMouseClickedTablePub(MouseEvent event) {
         Publication pub = tablePub.getSelectionModel().getSelectedItem();
            textFieldTitre_pub.setText("" +pub.getTitre());
            textFieldDescription.setText("" +pub.getDescription());
+    }
 
+    @FXML
+    private void onMouseClickedTableComm(MouseEvent event) {
+        Commentaire comm = tableComm.getSelectionModel().getSelectedItem();
+           textfieldCommentaire.setText("" +comm.getCommentaire());
+           
+    }
+
+    @FXML
+    private void onAjouterComm(ActionEvent event) {
+        String commentaire = textfieldCommentaire.getText();
+        
+
+        Commentaire comm = new Commentaire(commentaire);
+        ServiceCommentaire service = new ServiceCommentaire();
+        service.ajouter(comm);
+        tableComm.refresh();
+    }
+
+    @FXML
+    private void onModifierComm(ActionEvent event) {
+    }
+
+    @FXML
+    private void onSupprimeComm(ActionEvent event) {
+    }
+
+    @FXML
+    private void onRetour(ActionEvent event) {
     }
     
 }
