@@ -156,13 +156,13 @@ public int Countdate(String searchby) {
         ObservableList<Reclamation> list = FXCollections.observableArrayList();
           int resultat=0;
         try {
-             String sql = "SELECT COUNT(*) FROM  `reclamation`  WHERE DATEDIFF(SYSDATE(),Date_rec)>3" ;
+             String sql = "SELECT COUNT(*) FROM  `reclamation`  WHERE DATEDIFF(SYSDATE(),Date_rec)>1";
        
             ste=mc.prepareStatement(sql);
             ResultSet rst = ste.executeQuery(sql);
            
              while(rst.next()){
-                resultat++;
+                resultat=rst.getInt("COUNT(*)");
              }
             
             
