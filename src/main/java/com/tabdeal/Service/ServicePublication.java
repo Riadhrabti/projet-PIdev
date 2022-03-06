@@ -9,6 +9,7 @@ import com.tabdeal.Entite.Categorie;
 import com.tabdeal.Entite.Publication;
 import com.tabdeal.InterfaceService.InterfaceService;
 import com.tabdeal.Utils.DataBase;
+import com.tabdeal.Utils.JavaMail;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -90,12 +91,20 @@ public class ServicePublication implements InterfaceService<Publication> {
              ps.setInt(7, t.getId_user());
              ps.executeUpdate();
              
+             
+             JavaMail.sendMail("mahdibenrejeb7@gmail.com");
+             
         } catch (SQLException ex) {
             Logger.getLogger(ServicePublication.class.getName()).log(Level.SEVERE, null, ex);
-        }}
+        } catch (Exception ex) {
+              Logger.getLogger(ServicePublication.class.getName()).log(Level.SEVERE, null, ex);
+          }}
       else {
         throw new RuntimeException("Your Publication is not clean");
       }
+      
+      
+      
 
     }
 
