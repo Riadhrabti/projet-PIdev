@@ -59,6 +59,31 @@ public class ServiceCommentaire implements InterfaceService <Commentaire> {
             Logger.getLogger(ServiceCommentaire.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void ajouterCommentaire(Commentaire t,int id_publication  ){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date_commentaire = new Date(System.currentTimeMillis()) ;
+        
+        PreparedStatement ps;
+        
+        try {
+            String req = "INSERT INTO `commentaire` ( `id_user`, `id_publication`, `commentaire`, `date`) VALUES (?,?,?,?)";
+            ps= conn.prepareStatement(req);
+            
+             ps.setInt(1, t.getId_user());
+             ps.setInt(2, id_publication);
+             ps.setString(3, t.getCommentaire());
+             ps.setString(4, date_commentaire.toString());
+             
+             ps.executeUpdate();
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceCommentaire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    
 
     @Override
     public boolean delete(Commentaire t)  {
@@ -84,6 +109,7 @@ public class ServiceCommentaire implements InterfaceService <Commentaire> {
             pste = conn.prepareStatement(req);
             pste.setString(1, t.getCommentaire());
             pste.setString(2, t.getDate());
+            pste.setInt(3, t.getId());
             
 
             pste.executeUpdate();
@@ -114,6 +140,37 @@ public class ServiceCommentaire implements InterfaceService <Commentaire> {
                 p.setId_publication(rs.getInt(3));
                 p.setCommentaire(rs.getString(4));
                 p.setDate(rs.getString("commentaire"));
+                
+
+                commentaires.add(p);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceCommentaire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return commentaires;
+    }
+    
+    
+    public ObservableList<Commentaire> getAll(int id_publication)  {
+        ObservableList<Commentaire> commentaires = FXCollections.observableArrayList();
+        String req = "SELECT * FROM `commentaire` WHERE id_publication="+id_publication;
+
+        try {
+//            pste = conn.prepareStatement(req);
+//            ResultSet rs = pste.executeQuery();
+
+            ste = conn.createStatement();
+            ResultSet rs = ste.executeQuery(req);
+
+            while (rs.next()) {
+                Commentaire p = new Commentaire();
+                p.setId(rs.getInt("id"));
+                p.setId_user(rs.getInt(2));
+                p.setId_publication(rs.getInt(3));
+                p.setCommentaire(rs.getString(4));
+                p.setDate(rs.getString("date"));
                 
 
                 commentaires.add(p);

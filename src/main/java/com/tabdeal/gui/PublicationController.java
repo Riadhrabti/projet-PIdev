@@ -295,6 +295,9 @@ public class PublicationController implements Initializable {
         Publication pub = tablePub.getSelectionModel().getSelectedItem();
            textFieldTitre_pub.setText("" +pub.getTitre());
            textFieldDescription.setText("" +pub.getDescription());
+           this.showCommentaire(pub.getId());
+           
+           
     }
 
     @FXML
@@ -307,24 +310,93 @@ public class PublicationController implements Initializable {
     @FXML
     private void onAjouterComm(ActionEvent event) {
         String commentaire = textfieldCommentaire.getText();
+        Publication pub = tablePub.getSelectionModel().getSelectedItem();
         
 
-        Commentaire comm = new Commentaire(commentaire);
+        Commentaire comm = new Commentaire(commentaire );
         ServiceCommentaire service = new ServiceCommentaire();
-        service.ajouter(comm);
+        service.ajouterCommentaire(comm,pub.getId());
         tableComm.refresh();
+        ObservableList<Commentaire> comm1 = service.getAll(comm.getId_publication());
+        
+        
+        
+        
+        collCommentaire.setCellValueFactory(new PropertyValueFactory<Commentaire,String>("commentaire"));
+        collDateComm.setCellValueFactory(new PropertyValueFactory<Commentaire,String>("date"));
+        
+        
+        tableComm.setItems(comm1);
+        
+        
+        
+        
     }
 
     @FXML
     private void onModifierComm(ActionEvent event) {
+        Commentaire comm=tableComm.getSelectionModel().getSelectedItem();
+        String commentaire = textfieldCommentaire.getText();
+        
+
+        comm.setCommentaire(commentaire);
+        
+        ServiceCommentaire service = new ServiceCommentaire();
+        service.update(comm);
+        tableComm.refresh();
+        ObservableList<Commentaire> comm1 = service.getAll(comm.getId_publication());
+        
+        
+        
+        
+        collCommentaire.setCellValueFactory(new PropertyValueFactory<Commentaire,String>("commentaire"));
+        collDateComm.setCellValueFactory(new PropertyValueFactory<Commentaire,String>("date"));
+        
+        
+        tableComm.setItems(comm1);
     }
 
     @FXML
     private void onSupprimeComm(ActionEvent event) {
+        Commentaire comm=tableComm.getSelectionModel().getSelectedItem();
+        
+        
+
+        
+       
+        ServiceCommentaire service = new ServiceCommentaire();
+        service.delete(comm);
+        tablePub.refresh();
+        ObservableList<Commentaire> comm1 = service.getAll(comm.getId_publication());
+        
+        
+        
+        
+        collCommentaire.setCellValueFactory(new PropertyValueFactory<Commentaire,String>("commentaire"));
+        collDateComm.setCellValueFactory(new PropertyValueFactory<Commentaire,String>("date"));
+        
+        
+        tableComm.setItems(comm1);
     }
 
     @FXML
     private void onRetour(ActionEvent event) {
     }
     
+    
+    private void showCommentaire(int id_publication) {
+        
+        ServiceCommentaire service = new ServiceCommentaire();
+        ObservableList<Commentaire> comm = service.getAll(id_publication);
+        
+        
+        
+        
+        collCommentaire.setCellValueFactory(new PropertyValueFactory<Commentaire,String>("commentaire"));
+        collDateComm.setCellValueFactory(new PropertyValueFactory<Commentaire,String>("date"));
+        
+        
+        tableComm.setItems(comm);
+        
+    }
 }
