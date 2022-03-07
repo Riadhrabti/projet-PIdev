@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Services;
 
-import Config.Database;
-import Entity.Echange;
+import Utils.Database;
+import Entities.Echange;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,6 +23,7 @@ import javafx.collections.ObservableList;
 public class EchangeService {
      Connection mc;
     PreparedStatement ste;
+    PreparedStatement ste1;
     
     public EchangeService(){
     mc=Database.getInstance().getCnx();
@@ -73,7 +74,64 @@ public class EchangeService {
     } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        }
+        
+        ResultSet rst ;
+        public void UpdateEchange2(int i){
+        String req1 ="SELECT * FROM `echange` WHERE id_echange = "+i;
+        //String req1 ="update Echange set etat=? where id_echange = ? ";
+        int idArticle1 =0;
+        int idArticle2=0;
+        int idprop1=0;
+        int idprop2=0;
+        try {
+            ste=mc.prepareStatement(req1);
+            rst = ste.executeQuery();
+            while (rst.next()){
+            idArticle1=rst.getInt("id_article1");
+            idArticle2= rst.getInt("id_article2");
+            System.out.print(idArticle1);
+            System.out.print(idArticle2);
+            }
+            String req2="SELECT * FROM `article` WHERE article.id="+idArticle1;
+            ste=mc.prepareStatement(req2);
+            rst = ste.executeQuery();
+             while (rst.next()){
+            idprop1=rst.getInt("id_proprietaire");
+            System.out.print(idprop1);
+            }
+            
+            
+            String req3="SELECT * FROM `article` WHERE article.id="+idArticle2;
+             ste=mc.prepareStatement(req3);
+            rst = ste.executeQuery();
+             while (rst.next()){
+            idprop2=rst.getInt("id_proprietaire");
+            System.out.print(idprop2);
+            }
+            
+            String req4="update `article` set article.id_proprietaire=? WHERE article.id=? ";
+            ste=mc.prepareStatement(req4);
+            ste.setInt(2,idArticle2);
+            ste.setInt(1,idprop1);
+            ste.executeUpdate();
+            
+            String req5="update `article` set article.id_proprietaire=? WHERE article.id=? ";
+            ste1=mc.prepareStatement(req5);
+            ste1.setInt(1,idprop2);
+            ste1.setInt(2,idArticle1);
+            ste1.executeUpdate();
+            
+            
+             
+            
+    } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+                
     }
+        
+        
      public ObservableList<Echange> afficherEchange(){
         ObservableList<Echange> echanges = FXCollections.observableArrayList();
         String sql = "select * from Echange";

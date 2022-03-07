@@ -5,9 +5,9 @@
  */
 package test.Gestion_Echange;
 
-import Config.Database;
-import Controller.ReclamationService;
-import Entity.Reclamation;
+import Utils.Database;
+import Services.ReclamationService;
+import Entities.Reclamation;
 import java.util.Calendar;
 
 /**

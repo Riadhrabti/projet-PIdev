@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Config;
+package Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 
 public class Database {
-    public String url="jdbc:mysql://localhost:3306/sgbd1";
+    public String url="jdbc:mysql://localhost:3306/tabdealdb";
     public String user="root";
     public String pwd="";
     public static Database cn;

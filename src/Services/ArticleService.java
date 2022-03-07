@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Services;
 
 /**
  *
  * @author Riadh
  */
-import Config.Database;
-import Entity.Article;
+import Utils.Database;
+import Entities.Article;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

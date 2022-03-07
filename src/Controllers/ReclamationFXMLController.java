@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Controllers;
 
-import Controller.ReclamationService;
-import Entity.Reclamation;
+import Services.ReclamationService;
+import Entities.Reclamation;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.sql.Date;
@@ -122,7 +122,7 @@ public class ReclamationFXMLController implements Initializable {
             Reclamation R=new Reclamation(44,id_mem1,id_ech,titre,Description,sqlDate,1);
             ReclamationService rc=new ReclamationService();
             rc.ajouterReclamation(R);
-            Image img = new Image("/Accept.png");
+            Image img = new Image("/Ressources/Accept.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()
@@ -156,7 +156,7 @@ public class ReclamationFXMLController implements Initializable {
         ReclamationService reclamations= new ReclamationService();
         reclamations.DeleteReclamation(r1);
         show();
-        Image img = new Image("/Accept.png");
+        Image img = new Image("/Ressources/Accept.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()
@@ -183,7 +183,7 @@ public class ReclamationFXMLController implements Initializable {
             int id= Integer.parseInt(id_rec);
             int et= Integer.parseInt(etat);
              if (et!=1&&et!=2){
-                 Image img = new Image("/decline.png");
+                 Image img = new Image("/Ressources/decline.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()
@@ -203,7 +203,7 @@ public class ReclamationFXMLController implements Initializable {
             ReclamationService rc=new ReclamationService();
             rc.UpdateReclamation(R);
          show();
-          Image img = new Image("/Accept.png");
+          Image img = new Image("/Ressources/Accept.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()
@@ -257,7 +257,7 @@ public class ReclamationFXMLController implements Initializable {
 
     @FXML
     private void sub_click(ActionEvent event) {
-         Image img = new Image("/Accept.png");
+         Image img = new Image("/Ressources/Accept.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()
@@ -310,7 +310,7 @@ public class ReclamationFXMLController implements Initializable {
             resultat1= String.valueOf(resultat);
             
             {
-            Image img = new Image("/active.png");
+            Image img = new Image("/Ressources/active.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()

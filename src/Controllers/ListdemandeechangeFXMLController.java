@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Controllers;
 
-import Controller.EchangeService;
-import Entity.Echange;
+import Services.EchangeService;
+import Entities.Echange;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -113,10 +113,16 @@ public void show(){
             Echange e=new Echange(id1,et1);
             EchangeService echanges=new EchangeService();
             echanges.UpdateEchange1(e);
+            String s ; 
+            s=id_ech.getText();
+            int i;
+            i = Integer.parseInt(s);
+            echanges.UpdateEchange2(i);
+            
     }
             
     show();
-            Image img = new Image("/Accept.png");
+            Image img = new Image("/Ressources/Accept.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()
@@ -149,7 +155,7 @@ public void show(){
             echanges.UpdateEchange1(e);
             
             show();
-            Image img = new Image("/Accept.png");
+            Image img = new Image("/Ressources/Accept.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()

@@ -5,9 +5,9 @@
  */
 package test.Gestion_Echange;
 
-import Config.Database;
-import Controller.EchangeService;
-import Entity.Echange;
+import Utils.Database;
+import Services.EchangeService;
+import Entities.Echange;
 
 /**
  *

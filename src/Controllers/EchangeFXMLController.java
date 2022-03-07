@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Controllers;
 
-import Controller.EchangeService;
-import Entity.Echange;
+import Services.EchangeService;
+import Entities.Echange;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -98,7 +98,7 @@ public class EchangeFXMLController implements Initializable {
             int id_art1= Integer.parseInt(id_article1);
             int id_art2= Integer.parseInt(id_article2);
             if (id_mem==id_mem2){
-                 Image img = new Image("/decline.png");
+                 Image img = new Image("/Ressources/decline.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()
@@ -110,7 +110,7 @@ public class EchangeFXMLController implements Initializable {
         notificationBuilder.darkStyle();
        notificationBuilder.show();
             }else if (id_art1==id_art2){
-                Image img = new Image("/decline.png");
+                Image img = new Image("/Ressources/decline.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()
@@ -130,7 +130,7 @@ public class EchangeFXMLController implements Initializable {
             es.ajouterEchange(E);
             
             
-             Image img = new Image("/Accept.png");
+             Image img = new Image("/Ressources/Accept.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()
@@ -172,7 +172,7 @@ public class EchangeFXMLController implements Initializable {
         EchangeService echanges= new EchangeService();
         echanges.DeleteEchange(e1);
         show();
-         Image img = new Image("/Accept.png");
+         Image img = new Image("/Ressources/Accept.png");
         Notifications notificationBuilder;
         
         notificationBuilder = Notifications.create()

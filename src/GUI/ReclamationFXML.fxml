@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReclamationFXMLController">
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ReclamationFXMLController">
    <children>
       <AnchorPane prefHeight="580.0" prefWidth="130.0" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="599.0" AnchorPane.topAnchor="0.0" />
       <Button fx:id="sub_btn" layoutX="575.0" layoutY="301.0" mnemonicParsing="false" onAction="#Submitclick" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);;" text="SUBMIT" />
@@ -51,7 +51,7 @@
       <Button fx:id="rec" layoutX="520.0" layoutY="269.0" mnemonicParsing="false" onAction="#sub_click" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #2270C2;" text="Refresh" visible="false" />
       <ImageView fx:id="logo" fitHeight="83.0" fitWidth="96.0" layoutX="607.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@logo.png" />
+            <Image url="@../Ressources/logo.png" />
          </image>
       </ImageView>
       <Button fx:id="reset_btn1" layoutX="520.0" layoutY="257.0" mnemonicParsing="false" onAction="#resetclick" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);;" text="Reset" />

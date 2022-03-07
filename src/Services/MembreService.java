@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Services;
 
 /**
  *
  * @author Riadh
  */
-import Config.Database;
-import Entity.Membre;
+import Utils.Database;
+import Entities.Membre;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +30,7 @@ public MembreService(){
     mc=Database.getInstance().getCnx();
 }
 public void ajouterMembre(Membre m){
-    String sql="INSERT INTO membre( nom, prenom, email, login, mdp, adresse, num_tel, Date_naissance, sexe, rating, nb_articles_posté, nb_articles_echangées) VALUES "
+    String sql="INSERT INTO user( nom, prenom, email, login, mdp, adresse, phone, Date_naissance, sexe, rating, nb_art_ech, nb_art_pos) VALUES "
             + "(?,?,?,?,?,?,?,?,?,?,?,?)";
     try{
         ste=mc.prepareStatement(sql);

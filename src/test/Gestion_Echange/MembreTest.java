@@ -5,9 +5,9 @@
  */
 package test.Gestion_Echange;
 
-import Config.Database;
-import Controller.MembreService;
-import Entity.Membre;
+import Utils.Database;
+import Services.MembreService;
+import Entities.Membre;
 import java.util.Calendar;
 
 /**
@@ -28,11 +28,11 @@ public class MembreTest {
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         
         Membre m1= new Membre(1, 2,4, "zz", "ee", "dd", "hh", "kk", "mm","xx", "MM",5.1f, sqlDate);
-        //System.out.print(m1);
-        Membre m2 = new Membre(1);
+        System.out.print(m1);
+        //Membre m2 = new Membre(1);
         //ms.ajouterMembre(m1);
-        ms.DeletePersonne(m2);
-                System.out.println(ms.afficherMembre());
+       //ms.DeletePersonne(m2);
+         //       System.out.println(ms.afficherMembre());
 
        
     }

@@ -1,8 +1,8 @@
-package Controller;
+package Services;
 
-import Config.Database;
-import Entity.Article;
-import Entity.Reclamation;
+import Utils.Database;
+import Entities.Article;
+import Entities.Reclamation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

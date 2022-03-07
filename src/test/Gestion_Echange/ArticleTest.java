@@ -5,9 +5,9 @@
  */
 package test.Gestion_Echange;
 
-import Config.Database;
-import Controller.ArticleService;
-import Entity.Article;
+import Utils.Database;
+import Services.ArticleService;
+import Entities.Article;
 import java.sql.Date;
 import java.util.Calendar;
 
