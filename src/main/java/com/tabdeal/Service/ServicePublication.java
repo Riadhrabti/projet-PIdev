@@ -92,7 +92,7 @@ public class ServicePublication implements InterfaceService<Publication> {
              ps.executeUpdate();
              
              
-             JavaMail.sendMail("mahdibenrejeb7@gmail.com");
+             JavaMail.sendMail("tabdealcontact@gmail.com");
              
         } catch (SQLException ex) {
             Logger.getLogger(ServicePublication.class.getName()).log(Level.SEVERE, null, ex);

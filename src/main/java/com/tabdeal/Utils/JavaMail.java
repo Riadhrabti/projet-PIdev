@@ -33,8 +33,8 @@ public class JavaMail {
         properties.put("mail.smtp.host", "smtp.gmail.com");//SMTP Host
         properties.put("mail.smtp.port", "587");//TLS Port
         
-        String myAccountEmail="mahdibenrejeb7@gmail.com";
-        String password="Ma724693069";
+        String myAccountEmail="tabdealcontact@gmail.com";
+        String password="Esprit123456789";
      Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -53,7 +53,7 @@ public class JavaMail {
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
             message.setSubject("Une nouvelle publication ajoutée ");
-            message.setText("<h1> Test Email </h1>");
+            message.setText(" Test Email ");
             return message;
         } catch (Exception ex) {
             Logger.getLogger(JavaMail.class.getName()).log(Level.SEVERE, null, ex);
