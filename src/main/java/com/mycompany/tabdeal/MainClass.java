@@ -5,11 +5,11 @@
  */
 package com.mycompany.tabdeal;
 
-import com.tabdeal.Entite.Categorie;
-import com.tabdeal.Entite.Publication;
-import com.tabdeal.Service.ServiceCategorie;
-import com.tabdeal.Service.ServiceFavoris;
-import com.tabdeal.Service.ServicePublication;
+import Entities.Categorie;
+import Entities.Publication;
+import Services.ServiceCategorie;
+import Services.ServiceFavoris;
+import Services.ServicePublication;
 
 /**
  *
@@ -21,8 +21,8 @@ public class MainClass {
         ServiceCategorie cat = new ServiceCategorie();
       ServicePublication publicationService = new ServicePublication();
       
-      Publication p = new Publication("fuck","Zzab");
-      Publication p2 = new Publication("not","Zzab");
+      Publication p = new Publication("fuck","tt");
+      Publication p2 = new Publication("not","tt");
       
       publicationService.ajouter(p);
         
