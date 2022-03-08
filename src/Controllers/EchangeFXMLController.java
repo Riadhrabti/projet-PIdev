@@ -258,22 +258,24 @@ public class EchangeFXMLController implements Initializable {
         
         
     }
-    private void GotoFXML(String vue, String title, Event aEvent) {
-        try {
-            Event event;
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = (Stage) ((Node) aEvent.getSource()).getScene().getWindow();
+    FXMLLoader fxmlLoader;
+     Stage stage;
+     Parent root;
+      private void GotoFXML(String vue, String title,ActionEvent event) throws Exception {
+        
+            String path = "/GUI/" ;
+             fxmlLoader = new FXMLLoader(getClass().getResource(path+vue+".fxml"));
+             root =  fxmlLoader.load();
+             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setTitle(title);
-            stage.setScene(new Scene(root1));
+            stage.setScene(new Scene(root));
             stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(EchangeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
+    
 
     @FXML
-    private void reclamerclick(ActionEvent event) {
+    private void reclamerclick(ActionEvent event) throws Exception {
         GotoFXML("ReclamationFXML","", event);
         
     }

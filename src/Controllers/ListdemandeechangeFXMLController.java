@@ -113,11 +113,8 @@ public void show(){
             Echange e=new Echange(id1,et1);
             EchangeService echanges=new EchangeService();
             echanges.UpdateEchange1(e);
-            String s ; 
-            s=id_ech.getText();
-            int i;
-            i = Integer.parseInt(s);
-            echanges.UpdateEchange2(i);
+            
+            echanges.UpdateEchange2(id1);
             
     }
             
@@ -137,6 +134,7 @@ public void show(){
        notificationBuilder.show();
     
         show(); 
+       
     }
 
 
@@ -172,8 +170,10 @@ public void show(){
     }
     private void GotoFXML(String vue, String title, Event aEvent) {
         try {
+             String path = "/GUI/" ;
             Event event;
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
+            
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path+vue + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = (Stage) ((Node) aEvent.getSource()).getScene().getWindow();
             stage.setTitle(title);

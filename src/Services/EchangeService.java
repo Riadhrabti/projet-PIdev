@@ -7,6 +7,8 @@ package Services;
 
 import Utils.Database;
 import Entities.Echange;
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -131,7 +133,7 @@ public class EchangeService {
                 
     }
         
-        
+     
      public ObservableList<Echange> afficherEchange(){
         ObservableList<Echange> echanges = FXCollections.observableArrayList();
         String sql = "select * from Echange";
@@ -157,6 +159,7 @@ public class EchangeService {
 
         
     }
+ 
         public void DeleteEchange(Echange e ){
         
         String sql ="delete from Echange where id_echange = ?";
