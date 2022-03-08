@@ -213,11 +213,12 @@ public class FillActualité implements Initializable {
         @Override
         public void handle(ActionEvent event)   {
                 a.addAppreciation(5, j);
+                       Like.setDisable(true);
+
            
 }
 });
 
-       
        
        
        
