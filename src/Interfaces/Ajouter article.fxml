@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1091.0" prefWidth="733.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaces.FXMLDocumentController">
+   <children>
+      <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" opacity="0.85" prefHeight="126.0" prefWidth="733.0" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);" styleClass="card-01" stylesheets="@stylesheet.css" text="TabDeal" textFill="#f2e4e4" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Montserrat-Bold" size="28.0" />
+         </font>
+      </Label>
+      <HBox layoutX="34.0" layoutY="187.0" prefHeight="66.0" prefWidth="682.0">
+         <children>
+            <TextField opacity="0.35" prefHeight="66.0" prefWidth="679.0" text="Titre de votre annonce" />
+         </children>
+      </HBox>
+      <TextField layoutX="31.0" layoutY="126.0" text="Information generale" />
+      <TextField layoutX="33.0" layoutY="161.0" text="Titre " />
+      <TextField layoutX="33.0" layoutY="253.0" text="Description" />
+      <VBox layoutX="34.0" layoutY="279.0" prefHeight="112.0" prefWidth="698.0">
+         <children>
+            <TextField opacity="0.5" prefHeight="120.0" prefWidth="698.0" text="Ex : Je mets en vente " />
+         </children>
+      </VBox>
+      <ComboBox fx:id="com" layoutX="34.0" layoutY="391.0" prefWidth="150.0" promptText="Catégorie " />
+      <ComboBox layoutX="34.0" layoutY="448.0" prefWidth="150.0" promptText="Gouvernorat" />
+      <TextField layoutX="32.0" layoutY="484.0" text="Etat " />
+      <VBox layoutX="34.0" layoutY="510.0" prefHeight="38.0" prefWidth="698.0">
+         <children>
+            <TextField opacity="0.5" prefHeight="120.0" prefWidth="698.0" />
+         </children>
+      </VBox>
+      <TextField layoutX="32.0" layoutY="555.0" text="Année" />
+      <TextField layoutX="34.0" layoutY="581.0" opacity="0.5" prefHeight="29.0" prefWidth="698.0" />
+      <TextField layoutX="34.0" layoutY="611.0" text="couleur " />
+      <TextField layoutX="34.0" layoutY="637.0" opacity="0.5" prefHeight="29.0" prefWidth="698.0" />
+      <Button layoutX="349.0" layoutY="1040.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);" text="Publier" />
+      <TextField layoutX="34.0" layoutY="667.0" text="Images (0/10)" />
+      <VBox layoutX="34.0" layoutY="693.0" prefHeight="90.0" prefWidth="95.0" />
+      <TextField layoutX="34.0" layoutY="783.0" text="Numero de contact " />
+      <VBox layoutX="34.0" layoutY="809.0" prefHeight="30.0" prefWidth="292.0">
+         <children>
+            <TextField prefHeight="30.0" prefWidth="292.0" text="+216  " />
+         </children>
+      </VBox>
+      <TextField layoutX="35.0" layoutY="839.0" text="L'article souhaité :" />
+      <VBox layoutX="42.0" layoutY="865.0" prefHeight="58.0" prefWidth="285.0">
+         <children>
+            <TextField prefHeight="62.0" prefWidth="286.0" />
+         </children>
+      </VBox>
+      
+   </children>
+   <effect>
+      <DropShadow color="#1b1eeb" />
+   </effect>
+</AnchorPane>

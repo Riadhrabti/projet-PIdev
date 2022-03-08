@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="669.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication5.FXMLDocumentController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <ComboBox fx:id="com" layoutX="40.0" layoutY="256.0" prefWidth="150.0" promptText="Catégorie " />
+      <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" opacity="0.85" prefHeight="126.0" prefWidth="708.0" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);" styleClass="card-01" stylesheets="@../Interfaces/stylesheet.css" text="TabDeal" textFill="#f2e4e4">
+         <font>
+            <Font name="Montserrat-Bold" size="28.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="com1" layoutX="40.0" layoutY="302.0" prefWidth="150.0" promptText="Gouvernorat " />
+      <Label layoutX="40.0" layoutY="138.0" prefHeight="26.0" prefWidth="191.0" text="Information Génerale" />
+      <TextField fx:id="etat" layoutX="40.0" layoutY="480.0" prefHeight="30.0" prefWidth="292.0" />
+      <Label layoutX="40.0" layoutY="453.0" prefHeight="26.0" prefWidth="191.0" text="Etat" />
+      <Label layoutX="40.0" layoutY="335.0" prefHeight="26.0" prefWidth="191.0" text="Description " />
+      <TextField fx:id="description" layoutX="40.0" layoutY="361.0" prefHeight="74.0" prefWidth="446.0" />
+      <TextField fx:id="titre" layoutX="40.0" layoutY="204.0" prefHeight="30.0" prefWidth="292.0" />
+      <Label layoutX="40.0" layoutY="177.0" prefHeight="26.0" prefWidth="191.0" text="Titre de L'annonce" />
+      <Button fx:id="publier" layoutX="327.0" layoutY="590.0" mnemonicParsing="false" onAction="#publier" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);" text="Publier" />
+      <Button layoutX="280.0" layoutY="537.0" mnemonicParsing="false" onAction="#Importer_img_Jeu" text="Importer" />
+      <TextField fx:id="txt_Url_image" layoutX="40.0" layoutY="536.0" prefHeight="26.0" prefWidth="218.0" />
+      <Label layoutX="40.0" layoutY="518.0" text="image" />
+    </children>
+</AnchorPane>
