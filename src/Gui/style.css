@@ -1,0 +1,74 @@
+.button
+{
+-fx-background-color :  linear-gradient(#662D91, #00C4FF);;
+-fx-text-fill : #e7e5e5;
+}
+.button:hover{
+-fx-background-color : linear-gradient(#662D91, #00C4FF);
+}
+.button:pressed
+{
+-fx-background-color : linear-gradient(#662D91, #00C4FF);
+}
+
+.scroll-pane {
+    -fx-background-color: #02030A;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.toExcel_button{
+    -fx-background-color: transparent;
+    -fx-border-width: 1.3;
+    -fx-border-color: #009966;
+    -fx-border-radius: 8;
+    -fx-background-radius: 10px;
+    -fx-font-family: 'Lato Light';
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(27, 31, 53);
+}
+
+.toExcel_button:hover{
+    -fx-background-color: rgba(11,255,112,0.5);
+    -fx-border-width: 1.3;
+    -fx-border-color: #009966;
+    -fx-border-radius: 8;
+    -fx-background-radius: 10px;
+    -fx-font-family: 'Lato Light';
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(27, 31, 53);
+}
+
+.toExcel_button:pressed{
+    -fx-background-color: rgba(11,255,112,0.2);
+    -fx-border-width: 1.3;
+    -fx-border-color: #009966;
+    -fx-border-radius: 8;
+    -fx-background-radius: 10px;
+    -fx-font-family: 'Lato Light';
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(27, 31, 53);
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #10165F;
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: black;
+}

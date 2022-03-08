@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DetailUserGuiController">
+   <children>
+      <Pane prefHeight="99.0" prefWidth="504.0" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);">
+         <children>
+            <Label fx:id="type" layoutX="159.0" layoutY="23.0" prefHeight="56.0" prefWidth="178.0" text="Détails User" textFill="#f2e4e4">
+               <font>
+                  <Font name="Montserrat-Regular" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="61.0" layoutX="80.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/icons8_Xbox_Menu_32px.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Separator layoutX="24.0" layoutY="587.0" prefHeight="7.0" prefWidth="463.0" />
+      <Button fx:id="CancelButton" layoutX="146.0" layoutY="604.0" mnemonicParsing="false" onAction="#annuler" prefHeight="40.0" prefWidth="214.0" stylesheets="@style.css" text="Cancel" textFill="WHITE">
+        
+      </Button>
+      <Separator layoutX="352.0" layoutY="114.0" orientation="VERTICAL" prefHeight="120.0" prefWidth="9.0" />
+      <Label layoutX="32.0" layoutY="185.0" prefHeight="18.0" prefWidth="72.0" text="prénom" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="236.0" prefHeight="18.0" prefWidth="64.0" text="email" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="140.0" prefHeight="18.0" prefWidth="50.0" text="nom" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="285.0" prefHeight="18.0" prefWidth="50.0" text="login" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="435.0" prefHeight="18.0" prefWidth="111.0" text="date naissance" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="398.0" prefHeight="18.0" prefWidth="72.0" text="telephone" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="362.0" prefHeight="18.0" prefWidth="64.0" text="adresse" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="329.0" prefHeight="18.0" prefWidth="98.0" text="mot de passe" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="470.0" prefHeight="18.0" prefWidth="111.0" text="sexe" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="505.0" prefHeight="18.0" prefWidth="111.0" text="Role" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_nom" layoutX="148.0" layoutY="141.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label fx:id="lb_pr" layoutX="144.0" layoutY="186.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label fx:id="lb_mail" layoutX="159.0" layoutY="237.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label fx:id="lb_login" layoutX="148.0" layoutY="286.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label fx:id="lb_mdp" layoutX="159.0" layoutY="330.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label fx:id="lb_adr" layoutX="148.0" layoutY="363.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label fx:id="lb_tel" layoutX="149.0" layoutY="399.0" prefHeight="17.0" prefWidth="133.0" />
+      <Label fx:id="lb_date" layoutX="144.0" layoutY="437.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label fx:id="lb_sexe" layoutX="115.0" layoutY="471.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label fx:id="lb_role" layoutX="124.0" layoutY="506.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label layoutX="24.0" layoutY="536.0" prefHeight="18.0" prefWidth="50.0" text="Rating" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="566.0" prefHeight="18.0" prefWidth="163.0" text="Nombre_article_échange" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="267.0" layoutY="487.0" prefHeight="18.0" prefWidth="151.0" text="Nombre_article_posté" textFill="#1b0101">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_Rating" layoutX="105.0" layoutY="537.0" prefHeight="17.0" prefWidth="142.0" />
+      <Label fx:id="lb_éch" layoutX="205.0" layoutY="567.0" prefHeight="17.0" prefWidth="50.0" />
+      <Label fx:id="lb_pos" layoutX="427.0" layoutY="488.0" prefHeight="17.0" prefWidth="50.0" />
+      <ImageView fx:id="imgUser" fitHeight="120.0" fitWidth="133.0" layoutX="362.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

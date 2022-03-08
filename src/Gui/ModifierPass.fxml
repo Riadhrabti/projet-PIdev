@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="824.0" prefWidth="962.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierPassController">
+   <children>
+      <TextField fx:id="pass1" layoutX="511.0" layoutY="344.0" prefHeight="30.0" prefWidth="300.0" promptText="mot de passe actuelle" styleClass="formInput" stylesheets="@styles.css">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font></TextField>
+      <TextField fx:id="pass2" layoutX="511.0" layoutY="412.0" prefHeight="30.0" prefWidth="300.0" promptText="nouveau mot de passe" styleClass="formInput" stylesheets="@styles.css">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font></TextField>
+      <TextField fx:id="pass3" layoutX="511.0" layoutY="481.0" prefHeight="30.0" prefWidth="300.0" promptText="confirmer mot de passe" styleClass="formInput" stylesheets="@styles.css">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font></TextField>
+      <Button fx:id="conf" layoutX="608.0" layoutY="556.0" mnemonicParsing="false" onAction="Reset" prefHeight="30.0" prefWidth="116.0" styleClass="login_button2" stylesheets="@styles.css" text="Confirmer">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font></Button>
+      <ImageView fx:id="imageviewlogo" fitHeight="198.0" fitWidth="205.0" layoutX="563.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/logo.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="481.0" layoutY="258.0" prefHeight="45.0" prefWidth="414.0" text="Modifer votre mot de passe" textFill="#60b3eb">
+         <font>
+            <Font name="Cooper Black" size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane prefHeight="829.0" prefWidth="323.0" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);;">
+         <children>
+            <ImageView fx:id="imageU" fitHeight="170.0" fitWidth="235.0" layoutX="44.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lbfullname" layoutX="37.0" layoutY="184.0" prefHeight="30.0" prefWidth="250.0" stylesheets="@styles.css" />
+            <Separator layoutX="12.0" layoutY="229.0" prefHeight="3.0" prefWidth="299.0" />
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="44.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/feedback.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="44.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/icons8_Slider__32px_1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="45.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/icons8_Xbox_Menu_32px.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="44.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/icons8_Person_32px.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="86.0" layoutY="283.0" mnemonicParsing="false" onAction="#ConsultProf" prefHeight="38.0" prefWidth="158.0" stylesheets="@styles.css" text="Consulter Profil">
+               <styleClass>
+                  <String fx:value="formInput" />
+                  <String fx:value="loginInput" />
+               </styleClass>
+            </Button>
+            <Button layoutX="86.0" layoutY="326.0" mnemonicParsing="false" onAction="#upDate" prefHeight="38.0" prefWidth="158.0" stylesheets="@styles.css" text="Modifier Profil">
+               <styleClass>
+                  <String fx:value="formInput" />
+                  <String fx:value="loginInput" />
+               </styleClass>
+            </Button>
+            <Button layoutX="86.0" layoutY="374.0" mnemonicParsing="false" onAction="#ResetPass" prefHeight="38.0" prefWidth="184.0" stylesheets="@styles.css" text="Modifier mot de passe">
+               <styleClass>
+                  <String fx:value="formInput" />
+                  <String fx:value="loginInput" />
+               </styleClass>
+            </Button>
+            <Button layoutX="86.0" layoutY="426.0" mnemonicParsing="false" onAction="#DeleteUsr" prefHeight="38.0" prefWidth="184.0" stylesheets="@styles.css" text="Supprimer compte">
+               <styleClass>
+                  <String fx:value="formInput" />
+                  <String fx:value="loginInput" />
+               </styleClass>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

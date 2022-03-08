@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #14182C;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FirstController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0">
+         <image>
+            <Image url="@../Ressources/bg_login.PNG" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="51.0" layoutY="146.0" prefHeight="309.0" prefWidth="694.0" style="-fx-background-color: rgba(234, 237, 255, 0.15); -fx-background-radius: 7;" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="146.0">
+         <children>
+            <Label alignment="TOP_LEFT" layoutX="49.0" layoutY="143.0" prefHeight="22.0" prefWidth="294.0" text="Click here toCliquez ici pour vous inscrire register" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Lato-Light" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="26.0" layoutY="25.0" prefHeight="92.0" prefWidth="245.0" text="Vous n'êtes pas encore inscrit?" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Lato-Light" size="30.0" />
+               </font>
+            </Label>
+            <Button layoutX="41.0" layoutY="195.0" mnemonicParsing="false" onAction="#open_signup" prefHeight="38.0" prefWidth="123.0" styleClass="login_button2" stylesheets="@styles.css" text="S'inscrire" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Lato Regular" size="11.0" />
+               </font>
+            </Button>
+            <Label alignment="TOP_LEFT" layoutX="445.0" layoutY="165.0" prefHeight="79.0" prefWidth="233.0" text="Cliquez ici pour vous identifier" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Lato-Light" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="410.0" layoutY="34.0" prefHeight="100.0" prefWidth="233.0" text="Avez vous déjà un compte ?" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Lato-Light" size="30.0" />
+               </font>
+            </Label>
+            <Button layoutX="445.0" layoutY="205.0" mnemonicParsing="false" onAction="#open_login" prefHeight="38.0" prefWidth="130.0" styleClass="login_button2" stylesheets="@styles.css" text="connexion" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Lato Regular" size="11.0" />
+               </font>
+            </Button>
+            <VBox fx:id="vbox" layoutX="26.0" layoutY="-45.0" prefHeight="400.0" prefWidth="359.0" style="-fx-background-color: white; -fx-background-radius: 7;" />
+         </children></AnchorPane>
+      <ImageView fitHeight="113.0" fitWidth="158.0" layoutX="379.0" layoutY="-6.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
