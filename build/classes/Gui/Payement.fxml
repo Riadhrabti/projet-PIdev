@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="515.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(#662D91, #00C4FF);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Payement">
+   <children>
+      <Button fx:id="ret" layoutX="534.0" layoutY="18.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #72ccc4;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label layoutX="125.0" layoutY="219.0" text="Article" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="125.0" layoutY="269.0" text="Date de debut boost:" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="mail" layoutX="288.0" layoutY="212.0" />
+      <TextField fx:id="adresse" layoutX="288.0" layoutY="262.0" />
+      <Button fx:id="valider" layoutX="295.0" layoutY="459.0" mnemonicParsing="false" onAction="#stripeB" prefHeight="25.0" prefWidth="98.0" style="-fx-background-color: #72ccc4;" text="Payer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label layoutX="56.0" layoutY="23.0" prefHeight="35.0" prefWidth="98.0" text="Payement " textFill="#72ccc4">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="39.0" fitWidth="47.0" layoutX="142.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/D17_10.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="47.0" layoutX="255.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/Paypal_2014_logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="110.0" layoutX="355.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/136-1367012_mastercard-visa-2008-pictures-to-pin-on-pinterest.png" />
+         </image>
+      </ImageView>
+      <RadioButton layoutX="47.0" layoutY="368.0" mnemonicParsing="false" text="1jours/5TND" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </RadioButton>
+      <RadioButton layoutX="228.0" layoutY="368.0" mnemonicParsing="false" text="7jours/20TND" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </RadioButton>
+      <RadioButton layoutX="435.0" layoutY="368.0" mnemonicParsing="false" text="14jours/30TND" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </RadioButton>
+   </children>
+</AnchorPane>
